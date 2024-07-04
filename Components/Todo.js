@@ -2,7 +2,7 @@ import React from 'react'
 import { Pressable, StyleSheet, Text, View } from 'react-native'
 import Colors from '../Constants/Colors'
 
-export const Todo = ({ item, onPress }) =>
+export const Todo = ({ item, onPress, onLongPress }) =>
 {
 
     return (
@@ -10,8 +10,10 @@ export const Todo = ({ item, onPress }) =>
             <Pressable android_ripple={{ color: Colors.secondary }} style={({ pressed }) =>
             {
                 return [{ backgroundColor: pressed ? styles.iosRipple : Colors.tertiary }, styles.listItem]
-            }} onPress={() => onPress(item.id)} >
-                <Text style={styles.listItemTxt}>{item.text}</Text>
+            }} onPress={onPress}
+                onLongPress={onLongPress}
+            >
+                <Text style={styles.listItemTxt}>{item.todo}</Text>
             </Pressable>
         </View>
     )
